@@ -25,7 +25,7 @@ public class LogController {
 
        // System.out.println(jsonstr);
 
-        logger.info(jsonstr);
+       logger.info(jsonstr);
 
 
         return  null;
