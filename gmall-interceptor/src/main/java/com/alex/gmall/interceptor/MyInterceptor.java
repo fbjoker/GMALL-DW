@@ -14,6 +14,7 @@ public class MyInterceptor implements Interceptor {
 
     @Override
     public void initialize() {
+
         gson= new Gson();
 
     }
