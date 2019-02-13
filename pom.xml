@@ -21,6 +21,8 @@
         <module>gmall-common</module>
         <module>gmall-mock</module>
         <module>gmall-logger</module>
+        <module>gmall-interceptor</module>
+        <module>gmall-realtime</module>
     </modules>
 
     <properties>
@@ -82,6 +84,31 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
+            </dependency>
+
+
+
+
+
+            <dependency>
+                <groupId>org.apache.spark</groupId>
+                <artifactId>spark-core_2.11</artifactId>
+                <version>${spark.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.spark</groupId>
+                <artifactId>spark-streaming_2.11</artifactId>
+                <version>${spark.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.kafka</groupId>
+                <artifactId>kafka-clients</artifactId>
+                <version>0.10.2.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.spark</groupId>
+                <artifactId>spark-streaming-kafka-0-10_2.11</artifactId>
+                <version>${spark.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

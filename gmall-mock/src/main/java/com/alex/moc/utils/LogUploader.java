@@ -13,9 +13,11 @@ public class LogUploader {
     public static void sendLogStream(String log){
         try{
             //不同的日志类型对应不同的URL
+            //离线的数据
 //            URL url  =new URL("http://logserver/log");
 
-            URL url  =new URL("http://logserver/log");
+            //实时的数据
+            URL url  =new URL("http://logserver:8010/logrealtime");
 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             //设置请求方式为post
