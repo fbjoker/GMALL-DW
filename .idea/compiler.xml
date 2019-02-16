@@ -6,12 +6,19 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="dw-chart" />
+        <module name="gmall-canel" />
         <module name="gmall-common" />
+        <module name="gmall-exprot2es" />
         <module name="gmall-interceptor" />
         <module name="gmall-logger" />
         <module name="gmall-mock" />
+        <module name="gmall-publisher" />
         <module name="gmall-realtime" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="spring-boot-echarts" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

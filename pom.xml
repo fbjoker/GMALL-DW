@@ -23,6 +23,8 @@
         <module>gmall-logger</module>
         <module>gmall-interceptor</module>
         <module>gmall-realtime</module>
+        <module>gmall-canel</module>
+        <module>gmall-exprot2es</module>
     </modules>
 
     <properties>
@@ -110,6 +112,22 @@
                 <artifactId>spark-streaming-kafka-0-10_2.11</artifactId>
                 <version>${spark.version}</version>
             </dependency>
+
+                <dependency>
+                    <groupId>org.apache.spark</groupId>
+                    <artifactId>spark-hive_2.11</artifactId>
+                    <version>${spark.version}</version>
+                    <!--<scope>provided</scope>-->
+                </dependency>
+
+                <dependency>
+                    <groupId>org.apache.spark</groupId>
+                    <artifactId>spark-sql_2.11</artifactId>
+                    <version>${spark.version}</version>
+                </dependency>
+
+
+
         </dependencies>
     </dependencyManagement>
 

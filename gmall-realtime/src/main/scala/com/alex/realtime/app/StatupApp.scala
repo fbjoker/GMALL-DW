@@ -22,7 +22,7 @@ import org.apache.spark.rdd.RDD
 
 import scala.collection.mutable.ListBuffer
 
-object RealtimeApp {
+object StatupApp {
   def main(args: Array[String]): Unit = {
 
     val sparkConf: SparkConf = new SparkConf().setAppName("gmallrealtime").setMaster("local[*]")
@@ -50,14 +50,17 @@ object RealtimeApp {
       //driver操作
       val properties: Properties = PropertiesUtil.load("config.properties")
       val jedisDriver = new Jedis(properties.getProperty("redis.host"), properties.getProperty("redis.port").toInt)
-      val dauSet: util.Set[String] = jedisDriver.smembers("dau" + new SimpleDateFormat("yyyy-MM-dd").format(new Date()))
+      val dauSet: util.Set[String] = jedisDriver.smembers("dau:" + new SimpleDateFormat("yyyy-MM-dd").format(new Date()))
       //把取出来的当日数据放到广播变量里面
       val dausetBC: Broadcast[util.Set[String]] = sc.broadcast(dauSet)
 
-      println("过滤后:" + rdd.count())
+
+      jedisDriver.close()
+      println("过滤前:" + rdd.count())
 
       //这个在excutor处理
       val rddFilter: RDD[Startup] = rdd.filter { startup =>
+
         !dausetBC.value.contains(startup.mid) //当在redis里的时候就过滤掉,(满足条件就留下)
       }
 
@@ -69,12 +72,11 @@ object RealtimeApp {
     filterDstream.foreachRDD{rdd=>
       //不能把连接建立在这里是在driver里,excutor获取不到
 
+
       rdd.foreachPartition{ startupIter=>
         //应该吧连接建立在这里,excutor里
         val properties: Properties = PropertiesUtil.load("config.properties")
         val jedisExcutor = new Jedis(properties.getProperty("redis.host"), properties.getProperty("redis.port").toInt)
-
-
 
 
         val list = new ListBuffer[Startup]()
@@ -86,9 +88,12 @@ object RealtimeApp {
           startup.logHour=new SimpleDateFormat("HH").format(new Date(startup.ts))
           startup.logHourMinute=new SimpleDateFormat("HH:mm").format(new Date(startup.ts))
           //把过后的结果写到redis中
-          jedisExcutor.sadd("dau"+startup.logDate,startup.mid)
+          jedisExcutor.sadd("dau:"+startup.logDate,startup.mid)
+
           list+=startup
         }
+        jedisExcutor.close()
+
         //批量把过滤后结果写入到ES中
         MyEsUtil.executeIndexBulk(GmallConstant.ES_INDEX_DAU,list.toList,null);
 
@@ -97,6 +102,9 @@ object RealtimeApp {
 
 
     }
+
+    ssc.start()
+    ssc.awaitTermination()
 
 
   }

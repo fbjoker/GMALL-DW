@@ -49,7 +49,8 @@ public class LogController {
         JSONObject jsonObject = JSON.parseObject(log);
 
 
-        jsonObject.put("ts",System.currentTimeMillis()+3600*1000*24 +new Random().nextInt(3600*1000*5));
+//        jsonObject.put("ts",System.currentTimeMillis()+3600*1000*24 +new Random().nextInt(3600*1000*5));
+        jsonObject.put("ts",System.currentTimeMillis()+new Random().nextInt(3600*1000*5));
 
         String jsonstr = jsonObject.toJSONString();
 

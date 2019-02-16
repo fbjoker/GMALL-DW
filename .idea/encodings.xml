@@ -2,10 +2,15 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dw-chart" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gmall-canel" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gmall-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gmall-exprot2es" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gmall-interceptor" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gmall-logger" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gmall-mock" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gmall-publisher" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gmall-realtime" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../gmall0808_DW/dw-chart" charset="UTF-8" />
   </component>
 </project>
