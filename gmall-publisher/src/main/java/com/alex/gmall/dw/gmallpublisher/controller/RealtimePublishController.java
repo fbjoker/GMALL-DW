@@ -157,6 +157,7 @@ public class RealtimePublishController {
 
         List<Stat> statList=new ArrayList<>();
 
+
         //加入第一个option  年龄比例
         List<Option> ageOptions=new ArrayList();
         ageOptions.add(new Option("20岁以下",ageLt20Rate));
