@@ -28,6 +28,7 @@ public class LogController {
         JSONObject jsonObject = JSON.parseObject(log);
 
 
+
         jsonObject.put("ts",System.currentTimeMillis());
 
         String jsonstr = jsonObject.toJSONString();
