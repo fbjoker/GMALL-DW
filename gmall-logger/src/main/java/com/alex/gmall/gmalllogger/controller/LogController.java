@@ -34,6 +34,7 @@ public class LogController {
         String jsonstr = jsonObject.toJSONString();
 
        // System.out.println(jsonstr);
+       // System.out.println(jsonstr);
 
        logger.info(jsonstr);
 
