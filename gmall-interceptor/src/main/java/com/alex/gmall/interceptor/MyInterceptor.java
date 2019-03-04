@@ -15,6 +15,7 @@ public class MyInterceptor implements Interceptor {
     @Override
     public void initialize() {
 
+        //新建一个Gson
         gson= new Gson();
 
     }

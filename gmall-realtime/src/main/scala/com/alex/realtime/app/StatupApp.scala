@@ -39,7 +39,8 @@ object StatupApp {
     val startupDstream: DStream[Startup] = kafkaDstream.map(_.value()).map { startupjson =>
       val startup: Startup = JSON.parseObject(startupjson, classOf[Startup])
       startup
-    }
+    }\
+
 
 
     //从redis里面读取数据进行过滤
